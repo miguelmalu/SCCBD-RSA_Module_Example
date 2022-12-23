@@ -2,13 +2,25 @@
   "name": "example-rsa",
   "version": "0.1.0",
   "description": "My example RSA module",
-  "main": "index.js",
-  "type": "module",
+  "main": "./cjs/index.js",
+  "browser": "./esm/index.js",
   "scripts": {
-    "test": "node test.js"
+    "test": "node test.js",
+    "build:esm": "npx rimraf ./esm/* && tsc -m ES2020 --outDir esm",
+    "build:cjs": "npx rimraf ./cjs/* && tsc -m commonjs --outDir cjs"
   },
   "author": "",
   "license": "ISC",
+  "exports": {
+    ".": {
+      "node": {
+        "require": "./cjs/index.js",
+        "import": "./esm/index.js",
+        "module": "./esm/index.js"
+      },
+      "default": "./esm/index.js"
+    }
+  },
   "dependencies": {
     "bigint-crypto-utils": "^3.1.7"
   },
