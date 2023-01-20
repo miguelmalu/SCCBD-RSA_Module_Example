@@ -15,7 +15,7 @@
   "compilerOptions": {
     "target": "ES2020",
     "module": "ES2020",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
     "declaration": true,
   },
   "exclude": ["test.ts"]
